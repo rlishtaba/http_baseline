@@ -1,6 +1,6 @@
 module HttpBaseline
   module Version
-    MAJOR, MINOR, PATCH, PRE = 2, 0, 2
+    MAJOR, MINOR, PATCH, PRE = 2, 0, 3
     STRING                   = [MAJOR, MINOR, PATCH, PRE].compact.join('.')
   end
 
