@@ -1,6 +1,7 @@
 # HTTP
 
-TODO: Write a gem description
+### Status
+[![Build Status](https://travis-ci.org/simkimsia/UtilityBehaviors.png)](https://travis-ci.org/simkimsia/UtilityBehaviors)
 
 ## Installation
 
