@@ -36,10 +36,10 @@ end
 #
 # Example:
 #
-#  * the HttpBaseline response should have headers:
+#  * the HTTP response should have headers:
 #    | Accept | text/xml |
 #
-Then /^the HttpBaseline response should have headers:$/ do |table|
+Then /^the HTTP response should have headers:$/ do |table|
   hashed = table.rows_hash
 
   hashed.each_pair do |key, expected|
