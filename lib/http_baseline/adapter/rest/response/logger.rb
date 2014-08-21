@@ -13,23 +13,29 @@ module HttpBaseline
           def_delegators :@logger, :debug, :info, :warn, :error, :fatal
 
           def call(env)
-            debug "#{env.method} #{env.url.to_s}"
-            debug('request') { dump_headers env.request_headers }
-            debug('request') { env.body }
+            info('request') { '[%s] %s: %s' %['TX', env.method.upcase, env.url.to_s] }
+            dump_headers(env.request_headers) do |line|
+              debug('response') { '[%s] %s' % ['TX', line] }
+            end
+            debug('request') { '[%s] %s' % ['TX', env.body] } if env.body
             super
           end
 
           def on_complete(env)
-            debug('Status') { env.status.to_s }
-            debug('response') { dump_headers env.response_headers }
-            debug('response') { env.body }
+            info('status') { '[%s] %s' % ['RX', env.status.to_s] }
+            dump_headers(env.response_headers) do |line|
+              debug('response') { '[%s] %s' % ['RX', line] }
+            end
+            debug('response') { '[%s] %s' % ['RX', env.body] }
           end
 
           private
 
           def dump_headers(headers)
-            headers.map { |k, v| "#{k}: #{v.inspect}" }.join("\n")
+            max = headers.keys.map { |k| k.length }.max + 2
+            headers.map { |k, v| yield "%-#{max}s: #{v.inspect}" % k }
           end
+
         end
       end
     end
