@@ -1,0 +1,16 @@
+language: ruby
+script: "bundle exec rake spec"
+env:
+  - CI=true
+rvm:
+  - jruby-19mode
+  - 1.9.3
+  - 2.1.2
+gemfile:
+  - Gemfile
+notifications:
+  recipients:
+    - rlishtaba@rabbitmq.com
+branches:
+  only:
+    - master
