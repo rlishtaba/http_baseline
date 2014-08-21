@@ -13,7 +13,7 @@ module HttpBaseline
           def_delegators :@logger, :debug, :info, :warn, :error, :fatal
 
           def call(env)
-            info('request') { '[%s] %s: %s' %['TX', env.method.upcase, env.url.to_s] }
+            info('request') { '[%s] %s: %s' % ['TX', env.method.upcase, env.url.to_s] }
             dump_headers(env.request_headers) do |line|
               debug('response') { '[%s] %s' % ['TX', line] }
             end
