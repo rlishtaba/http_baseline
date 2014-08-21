@@ -1,7 +1,7 @@
 # HTTP
 
 ### Status
-[![Build Status](https://travis-ci.org/simkimsia/UtilityBehaviors.png)](https://travis-ci.org/simkimsia/UtilityBehaviors)
+[![Build Status](https://travis-ci.org/rlishtaba/http_baseline.svg?branch=master)](https://travis-ci.org/rlishtaba/http_baseline.svg?branch=master)
 
 ## Installation
 
