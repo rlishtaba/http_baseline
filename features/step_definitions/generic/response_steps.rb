@@ -19,7 +19,7 @@ end
 #
 #   * the JSON response should have "userId" matching with "[a-zA-Z0-9_-]{3,50}"
 #
-Then /^the JSON response should (not)?\s?have "([^"]*)" matching with "([^"]*)"$/ do |*options|
+Then /^the JSON response should (not)?\s?have "([^"]*)" matching with "((?!["]).*)"$/ do |*options|
   negative      = options.shift
   json_path     = options.shift
   regexp_string = options.shift
@@ -42,7 +42,7 @@ end
 #
 #   * the JSON response should have "errCode" with the text "SYSTEM_ERROR"
 #
-Then /^the JSON response should (not)?\s?have "([^"]*)" with the text "([^"]*)"$/ do |negative, json_path, text|
+Then /^the JSON response should (not)?\s?have "([^"]*)" with the text "((?!["]).*)"$/ do |negative, json_path, text|
   json    = @response.body
   results = JsonPath.new(json_path).on(json).to_a.map(&:to_s)
 
@@ -68,7 +68,7 @@ end
 #
 #   * the XML response should have "errCode" with the text "SYSTEM_ERROR"
 #
-Then /^the XML response should have "([^"]*)" with the text "([^"]*)"$/ do |xpath, text|
+Then /^the XML response should have "([^"]*)" with the text "((?!["]).*)"$/ do |xpath, text|
   parsed_response = Nokogiri::XML(@response.body.to_s)
   elements        = parsed_response.xpath(xpath)
   if self.respond_to?(:should)
